@@ -1,10 +1,74 @@
 body {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+
   font-family: Georgia, "Times New Roman", Times, serif;
+  font-family: "Roboto", sans-serif;
+  margin: 0px;
+  background-color: rgb(35, 3, 110);
 }
 .To-Dos {
   display: flex;
   flex-direction: column;
+  width: 100%;
+}
+h1 {
+  margin: 8px;
+  align-self: center;
+  color: white;
+}
+#newToDo {
+  font-size: large;
+  padding: 4px;
+  font-weight: 600;
+
+  border-radius: 8px;
+  margin-bottom: 8px;
+  border: 1px solid black;
+  align-self: center;
+  margin-left: 5%;
+  margin-right: 5%;
+  width: 70%;
+}
+
+.individualToDo {
+  font-size: larger;
+  display: flex;
+  margin-left: 5%;
+  margin-right: 5%;
+  justify-content: space-between;
+  align-content: space-around;
+  margin-bottom: 2%;
+  padding: 4px;
+  width: 90%;
+  background-color: white;
+  border-radius: 8px;
+}
+label {
+  align-self: center;
+}
+.checkToDo {
+  align-self: flex-start;
+  outline: 1px blue;
+  width: 20px;
+  height: 20px;
+  align-self: center;
+}
+.checkToDo:hover {
+  color: gray;
+}
+.garbage {
+  width: 30px;
+  height: 30px;
+}
+
+button {
+  background-color: transparent;
+  border: 0px;
+}
+.checkLabel {
+  gap: 8px;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
 }

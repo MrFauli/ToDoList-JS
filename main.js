@@ -10,8 +10,10 @@ const addStrike = (obj, label, checkBox) => {
   console.log(obj);
   if (checkBox.checked == true) {
     label.style.textDecoration = "line-through";
+    label.style.color = "grey";
   } else {
     label.style.textDecoration = "none";
+    label.style.color = "black";
   }
 
   console.log(ToDoList);
@@ -54,24 +56,32 @@ const addStoragedToDo = (ToDoOld) => {
   let checkedIt = oldToDo.checkBox;
   let id = oldToDo.id;
   const node = document.createElement("div");
+  const checkLabel = document.createElement("div");
+  checkLabel.className = "checkLabel";
   node.id = "ToDo" + id;
+  node.className = "individualToDo";
   console.log(node.id);
   let toDo = document.createElement("INPUT");
   toDo.setAttribute("type", "checkbox", "name");
   toDo.name = "ToDoBox" + id;
+  toDo.className = "checkToDo";
   let toDoLabel = document.createElement("LABEL");
   toDoLabel.htmlFor = "ToDoBox" + id;
   toDoLabel.innerText = input;
   let deleteButton = document.createElement("BUTTON");
-  deleteButton.innerText = "🚮";
+  const garbageIcon = document.createElement("img");
+  garbageIcon.className = "garbage";
+  garbageIcon.src = "./mulleimer.png";
+
+  deleteButton.innerText = "";
+  deleteButton.append(garbageIcon);
 
   toDo.addEventListener("change", () => addStrike(ToDoOld, toDoLabel, toDo));
   console.log("Checked " + checkedIt);
   toDo.checked = checkedIt;
-
-  node.appendChild(toDo);
-  node.appendChild(toDoLabel);
-
+  checkLabel.appendChild(toDo);
+  checkLabel.appendChild(toDoLabel);
+  node.appendChild(checkLabel);
   showToDo.appendChild(node);
 
   deleteButton.addEventListener("click", () => deleteToDo(node, ToDoOld));
@@ -135,16 +145,25 @@ function addNewToDo() {
       console.log();
       const node = document.createElement("div");
       node.id = "ToDo" + ToDoNum;
+      node.className = "individualToDo";
+      const checkLabel = document.createElement("div");
+      checkLabel.className = "checkLabel";
       console.log(node.id);
       let toDo = document.createElement("INPUT");
       toDo.setAttribute("type", "checkbox", "name");
       toDo.name = "ToDoBox" + ToDoNum;
+      toDo.className = "checkToDo";
       let toDoLabel = document.createElement("LABEL");
       toDoLabel.htmlFor = "ToDoBox" + ToDoNum;
       toDoLabel.innerText = inputToDo.value;
 
       let deleteButton = document.createElement("BUTTON");
-      deleteButton.innerText = "🚮";
+      const garbageIcon = document.createElement("img");
+      garbageIcon.className = "garbage";
+      garbageIcon.src = "./mulleimer.png";
+
+      deleteButton.innerText = "";
+      deleteButton.append(garbageIcon);
 
       let checkedIt = inputToDo.value;
       let input = toDo.checked;
@@ -156,9 +175,9 @@ function addNewToDo() {
       toDo.addEventListener("change", () =>
         addStrike(toDoInfos, toDoLabel, toDo)
       );
-      node.appendChild(toDo);
-      node.appendChild(toDoLabel);
-
+      checkLabel.appendChild(toDo);
+      checkLabel.appendChild(toDoLabel);
+      node.appendChild(checkLabel);
       showToDo.appendChild(node);
 
       deleteButton.addEventListener("click", () => deleteToDo(node, toDoInfos));
